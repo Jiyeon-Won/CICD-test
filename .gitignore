@@ -1,4 +1,4 @@
-# QueryDSL
+# QueryDSL QClass 포함 안함
 /src/main/generated/**
 
 .gradle/**

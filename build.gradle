@@ -45,7 +45,7 @@ dependencies {
     // Lombok 테스트 (@Slf4j)
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
-    // Test 용 DB h2
+    // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'com.h2database:h2'
 }

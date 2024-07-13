@@ -2,7 +2,10 @@ package com.sparta.spring_init_template.domain.exam.entity;
 
 import com.sparta.spring_init_template.common.TimeStampEntity;
 import com.sparta.spring_init_template.domain.exam.dto.ExamUpdateRequestDto;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,5 +31,10 @@ public class Exam extends TimeStampEntity {
     public void update(ExamUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle() != null ? requestDto.getTitle() : title;
         this.content = requestDto.getContent() != null ? requestDto.getContent() : content;
+    }
+
+    public void validateExam() {
+        // exam 검증
+        // ex) 사용자가 탈퇴 여부 검증
     }
 }

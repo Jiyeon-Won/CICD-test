@@ -7,11 +7,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 @RequiredArgsConstructor
 public enum ExamCodeEnum {
-    EXAM_NOT_FOUND(HttpStatus.NOT_FOUND, "없다."),
+    EXAM_NOT_FOUND(HttpStatus.NOT_FOUND, "없다.");
 
-
-
-    ;
     private final HttpStatus httpStatus;
     private final String message;
 }

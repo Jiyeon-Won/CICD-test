@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:test
+    url: jdbc:h2:mem:test;MODE=MySQL
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -14,7 +14,6 @@ spring:
       mode: always
 
   jpa:
-    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
     properties:
@@ -25,5 +24,6 @@ spring:
           CharSet: utf-8
           characterEncoding: utf-8
           useUnicode: true
+    defer-datasource-initialization: true
 
 jwt-secret-key: ${JWT-SECRET-KEY}

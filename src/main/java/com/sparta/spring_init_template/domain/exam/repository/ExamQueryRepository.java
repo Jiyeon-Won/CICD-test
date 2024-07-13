@@ -1,16 +1,11 @@
 package com.sparta.spring_init_template.domain.exam.repository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.sparta.spring_init_template.domain.exam.dto.ExamResponseDto;
+import java.util.List;
 import org.springframework.stereotype.Repository;
 
-@Slf4j
 @Repository
-@RequiredArgsConstructor
-public class ExamQueryRepository {
+public interface ExamQueryRepository {
 
-    private final EntityManager em;
-    private final JPAQueryFactory query;
+    List<ExamResponseDto> findAllExam();
 }

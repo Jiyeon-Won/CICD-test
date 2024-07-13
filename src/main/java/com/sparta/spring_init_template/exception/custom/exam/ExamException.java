@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class ExamException extends RuntimeException {
+
     private final ExamCodeEnum examCodeEnum;
 
     public ExamException(ExamCodeEnum examCodeEnum) {

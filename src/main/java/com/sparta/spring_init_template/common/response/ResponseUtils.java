@@ -1,6 +1,5 @@
 package com.sparta.spring_init_template.common.response;
 
-import com.sparta.spring_init_template.exception.custom.exam.ExamCodeEnum;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -27,6 +26,13 @@ public abstract class ResponseUtils {
                 ));
     }
 
+    public static ResponseEntity<MessageResponseDto> createOk() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new MessageResponseDto(
+                        HttpStatus.OK.value(), "생성 성공"
+                ));
+    }
+
     public static <T> ResponseEntity<DataResponseDto<T>> findOk(T data) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new DataResponseDto<>(
@@ -34,10 +40,24 @@ public abstract class ResponseUtils {
                 ));
     }
 
+    public static ResponseEntity<MessageResponseDto> findOk() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new MessageResponseDto(
+                        HttpStatus.OK.value(), "조회 성공"
+                ));
+    }
+
     public static <T> ResponseEntity<DataResponseDto<T>> updateOk(T data) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new DataResponseDto<>(
                         HttpStatus.OK.value(), "수정 성공", data
+                ));
+    }
+
+    public static ResponseEntity<MessageResponseDto> updateOk() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new MessageResponseDto(
+                        HttpStatus.OK.value(), "수정 성공"
                 ));
     }
 
