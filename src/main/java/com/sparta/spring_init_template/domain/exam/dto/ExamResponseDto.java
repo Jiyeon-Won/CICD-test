@@ -10,7 +10,7 @@ public class ExamResponseDto {
     private String title;
     private String content;
 
-    public static ExamResponseDto of(Exam exam) {
+    public static ExamResponseDto from(Exam exam) {
         return ExamResponseDto.builder()
                 .title(exam.getTitle())
                 .content(exam.getContent())

@@ -25,7 +25,7 @@ public class ExamService {
 
         findExam.validateExam(); // ex) 회원 탈퇴 여부
 
-        return ExamResponseDto.of(findExam);
+        return ExamResponseDto.from(findExam);
     }
 
     @Transactional(readOnly = true)
@@ -36,14 +36,11 @@ public class ExamService {
     // Exam 저장
     @Transactional
     public ExamResponseDto save(ExamCreateRequestDto requestDto) {
-        Exam exam = Exam.builder()
-            .title(requestDto.getTitle())
-            .content(requestDto.getContent())
-            .build();
+        Exam entity = requestDto.toEntity();
 
-        Exam savedExam = examRepository.save(exam);
+        Exam savedExam = examRepository.save(entity);
 
-        return ExamResponseDto.of(savedExam);
+        return ExamResponseDto.from(savedExam);
     }
 
     // Exam 수정
@@ -55,7 +52,7 @@ public class ExamService {
 
         findExam.update(requestDto);
 
-        return ExamResponseDto.of(findExam);
+        return ExamResponseDto.from(findExam);
     }
 
     // Exam 삭제
