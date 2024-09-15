@@ -14,24 +14,15 @@ server:
 spring:
   config:
     activate:
-      on-profile: local
-
-server:
-  port: 8080
-  serverAddress: localhost
-
-serverName: local_server
-
----
-
-spring:
-  config:
-    activate:
       on-profile: blue
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
 server:
   port: 8080
-  serverAddress: 172.31.13.28
+  serverAddress: 3.34.142.14
 
 serverName: blue_server
 
@@ -42,11 +33,32 @@ spring:
     activate:
       on-profile: green
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
 server:
   port: 8081
-  serverAddress: 172.31.13.28
+  serverAddress: 3.34.142.14
 
 serverName: green_server
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
+  serverAddress: localhost
+
+serverName: local_server
 
 ---
 
@@ -69,8 +81,6 @@ spring:
 #      mode: always
 
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         #show_sql: true
