@@ -88,6 +88,10 @@ jobs:
             export DB_USER=${{ secrets.DB_USERNAME }}
             export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
             export JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
+            if [ -z "$DB_URL" ]; then echo "DB_URL is not set"; else echo "DB_URL is set"; fi
+            if [ -z "$DB_USER" ]; then echo "DB_USER is not set"; else echo "DB_USER is set"; fi
+            if [ -z "$DB_PASSWORD" ]; then echo "DB_PASSWORD is not set"; else echo "DB_PASSWORD is set"; fi
+            if [ -z "$JWT_SECRET_KEY" ]; then echo "JWT_SECRET_KEY is not set"; else echo "JWT_SECRET_KEY is set"; fi
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
             sudo docker-compose -f docker-compose-${{env.TARGET_UPSTREAM}}.yml up -d
 
