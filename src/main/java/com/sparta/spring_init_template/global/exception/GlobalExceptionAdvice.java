@@ -1,9 +1,9 @@
-package com.sparta.spring_init_template.exception;
+package com.sparta.spring_init_template.global.exception;
 
-import com.sparta.spring_init_template.common.response.DataResponseDto;
-import com.sparta.spring_init_template.common.response.MessageResponseDto;
-import com.sparta.spring_init_template.common.response.ResponseUtils;
-import com.sparta.spring_init_template.exception.custom.exam.ExamException;
+import com.sparta.spring_init_template.global.common.response.DataResponseDto;
+import com.sparta.spring_init_template.global.common.response.MessageResponseDto;
+import com.sparta.spring_init_template.global.common.response.ResponseUtils;
+import com.sparta.spring_init_template.global.exception.custom.exam.ExamException;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.sparta.spring_init_template.config;
+package com.sparta.spring_init_template.global.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

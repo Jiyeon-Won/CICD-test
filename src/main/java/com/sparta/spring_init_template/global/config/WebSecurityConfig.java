@@ -1,4 +1,4 @@
-package com.sparta.spring_init_template.config;
+package com.sparta.spring_init_template.global.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

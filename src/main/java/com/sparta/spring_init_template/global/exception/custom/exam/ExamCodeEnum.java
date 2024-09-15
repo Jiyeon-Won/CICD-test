@@ -1,4 +1,4 @@
-package com.sparta.spring_init_template.exception.custom.exam;
+package com.sparta.spring_init_template.global.exception.custom.exam;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

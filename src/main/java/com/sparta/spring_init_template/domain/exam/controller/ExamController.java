@@ -1,8 +1,8 @@
 package com.sparta.spring_init_template.domain.exam.controller;
 
-import com.sparta.spring_init_template.common.response.DataResponseDto;
-import com.sparta.spring_init_template.common.response.MessageResponseDto;
-import com.sparta.spring_init_template.common.response.ResponseUtils;
+import com.sparta.spring_init_template.global.common.response.DataResponseDto;
+import com.sparta.spring_init_template.global.common.response.MessageResponseDto;
+import com.sparta.spring_init_template.global.common.response.ResponseUtils;
 import com.sparta.spring_init_template.domain.exam.dto.ExamCreateRequestDto;
 import com.sparta.spring_init_template.domain.exam.dto.ExamResponseDto;
 import com.sparta.spring_init_template.domain.exam.dto.ExamUpdateRequestDto;
@@ -35,7 +35,7 @@ public class ExamController {
             @Valid @RequestBody ExamCreateRequestDto requestDto
     ) {
         ExamResponseDto responseDto = examService.save(requestDto);
-        return ResponseUtils.createOk(responseDto);
+        return ResponseUtils.success(responseDto);
     }
 
     // Exam 조회
@@ -44,14 +44,14 @@ public class ExamController {
             @PathVariable Long examId
     ) {
         ExamResponseDto responseDto = examService.findById(examId);
-        return ResponseUtils.findOk(responseDto);
+        return ResponseUtils.success(responseDto);
     }
 
     // Exam 조회
     @GetMapping
     public ResponseEntity<DataResponseDto<List<ExamResponseDto>>> findAll() {
         List<ExamResponseDto> responseDto = examService.findAll();
-        return ResponseUtils.findOk(responseDto);
+        return ResponseUtils.success(responseDto);
     }
 
     // Exam 수정
@@ -62,7 +62,7 @@ public class ExamController {
             @Valid @RequestBody ExamUpdateRequestDto requestDto
     ) {
         ExamResponseDto responseDto = examService.update(examId, requestDto);
-        return ResponseUtils.updateOk(responseDto);
+        return ResponseUtils.success(responseDto);
     }
 
     // Exam 삭제
@@ -72,6 +72,6 @@ public class ExamController {
             @PathVariable Long examId
     ) {
         examService.delete(examId);
-        return ResponseUtils.deleteOk();
+        return ResponseUtils.success();
     }
 }

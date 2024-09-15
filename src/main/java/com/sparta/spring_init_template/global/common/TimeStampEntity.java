@@ -1,4 +1,4 @@
-package com.sparta.spring_init_template.common;
+package com.sparta.spring_init_template.global.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
