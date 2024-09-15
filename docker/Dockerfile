@@ -1,11 +1,9 @@
 FROM openjdk:17-jdk-slim
 
-ARG JAR_FILE=build/libs/*.jar
+ARG JAR_FILE=build/libs/*-SNAPSHOT.jar
 ARG PROFILES
 ARG ENV
 
-WORKDIR /apps
+COPY ${JAR_FILE} /app.jar
 
-COPY ${JAR_FILE} /apps/app.jar
-
-ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILES}", "-Dserver.env=${ENV}", "-jar", "/apps/app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=${PROFILES}", "-Dserver.env=${ENV}", "/app.jar"]
