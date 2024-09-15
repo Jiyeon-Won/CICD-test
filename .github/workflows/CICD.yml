@@ -12,6 +12,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DB_URL: ${{ secrets.DB_URL }}
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      JWT-SECRET-KEY: ${{ secrets.JWT_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v3
       - name: Install JDK 17
@@ -25,11 +30,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew clean build
-        env:
-          DB_URL: ${{ secrets.DB_URL }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
 
       - name: Set up Docker QEMU(Quick Emulator)
         uses: docker/setup-qemu-action@v3
@@ -83,12 +83,7 @@ jobs:
           host: ${{ secrets.LIVE_SERVER_IP }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
-          verbose: true  # 추가 아마 로그
           script: |
-            echo "DB_URL=${{ secrets.DB_URL }}" > .env
-            echo "DB_USER=${{ secrets.DB_USERNAME }}" >> .env
-            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-            echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
             sudo docker-compose -f docker-compose-${{env.TARGET_UPSTREAM}}.yml up -d
 
