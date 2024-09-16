@@ -88,6 +88,7 @@ jobs:
             export DB_USER=${{  secrets.DB_USER  }}
             export DB_PASSWORD=${{  secrets.DB_PASSWORD  }}
             export JWT_SECRET_KEY=${{  secrets.JWT_SECRET_KEY  }}
+            echo $DB_URL
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
             sudo docker-compose -f docker-compose-${{env.TARGET_UPSTREAM}}.yml up -d
 
