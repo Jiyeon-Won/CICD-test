@@ -89,6 +89,7 @@ spring:
           CharSet: utf-8
           characterEncoding: utf-8
           useUnicode: true
+        dialect: org.hibernate.dialect.MySQLDialect
 #    defer-datasource-initialization: true
 
 logging.level:
