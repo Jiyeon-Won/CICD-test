@@ -16,10 +16,6 @@ spring:
     activate:
       on-profile: blue
 
-  jpa:
-    hibernate:
-      ddl-auto: validate
-
 server:
   port: 8080
   serverAddress: 3.34.142.14
@@ -33,10 +29,6 @@ spring:
     activate:
       on-profile: green
 
-  jpa:
-    hibernate:
-      ddl-auto: validate
-
 server:
   port: 8081
   serverAddress: 3.34.142.14
@@ -49,10 +41,6 @@ spring:
   config:
     activate:
       on-profile: local
-
-  jpa:
-    hibernate:
-      ddl-auto: update
 
 server:
   port: 8080
@@ -69,7 +57,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_URL}/exam?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://${DB_URL}:3306/exam?serverTimezone=Asia/Seoul
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -81,6 +69,8 @@ spring:
 #      mode: always
 
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         #show_sql: true
