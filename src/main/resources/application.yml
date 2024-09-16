@@ -16,6 +16,10 @@ spring:
     activate:
       on-profile: blue
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
 server:
   port: 8080
   serverAddress: 54.180.238.186
@@ -29,6 +33,10 @@ spring:
     activate:
       on-profile: green
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
 server:
   port: 8081
   serverAddress: 54.180.238.186
@@ -41,6 +49,10 @@ spring:
   config:
     activate:
       on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 server:
   port: 8080
@@ -69,8 +81,6 @@ spring:
 #      mode: always
 
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         #show_sql: true
