@@ -88,4 +88,5 @@ logging.level:
 #  org.springframework.security: debug
 #  org.springframework.web: debug
 
+
 JWT_SECRET_KEY: ${JWT_SECRET_KEY}
