@@ -26,10 +26,10 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean build
         env:
-          DB_URL: ${{  secrets.DB_URL  }}
-          DB_USER: ${{  secrets.DB_USER  }}
-          DB_PASSWORD: ${{  secrets.DB_PASSWORD  }}
-          JWT_SECRET_KEY: ${{  secrets.JWT_SECRET_KEY  }}
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
 
       - name: Set up Docker QEMU(Quick Emulator)
         uses: docker/setup-qemu-action@v3
