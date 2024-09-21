@@ -89,12 +89,34 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
             sudo docker-compose -f docker-compose-${{ env.TARGET_UPSTREAM }}.yml up -d
 
-      - name: Check deploy server URL
-        uses: jtalk/url-health-check-action@v3
+      - name: Health Check on EC2 Instance
+        uses: appleboy/ssh-action@master
         with:
-          url: http://${{ secrets.LIVE_SERVER_IP }}:${{env.STOPPED_PORT}}/env
-          max-attempts: 6
-          retry-delay: 10s
+          username: ubuntu
+          host: ${{ secrets.LIVE_SERVER_IP }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
+          script: |
+            echo "Starting health check on port ${{ env.STOPPED_PORT }}"
+            for i in {1..6}; do
+              STATUS=$(curl -o /dev/null -w "%{http_code}" http://localhost:${{ env.STOPPED_PORT }}/env)
+              if [ "$STATUS" -eq 200 ]; then
+                echo "Health check passed"
+                exit 0
+              else
+                echo "Health check attempt $i failed"
+                sleep 10
+              fi
+            done
+            echo "Health check failed after 6 attempts"
+            exit 1  # Exit with error code to fail the GitHub Action
+
+#      - name: Check deploy server URL
+#        uses: jtalk/url-health-check-action@v3
+#        with:
+#          url: http://${{ secrets.LIVE_SERVER_IP }}:${{ env.STOPPED_PORT }}/env
+#          max-attempts: 6
+#          retry-delay: 10s
 
       - name: Change nginx upstream
         uses: appleboy/ssh-action@master
