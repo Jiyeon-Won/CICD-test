@@ -97,21 +97,21 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
           script: |
+            set +e
             echo "Starting health check on port ${{ env.STOPPED_PORT }}"
             for i in {1..6}; do
-              STATUS=$(curl -o /dev/null -w "%{http_code}" "http://localhost:${{ env.STOPPED_PORT }}/env")
-              echo $STATUS
-              if [ $STATUS = 200 ]; then
+              STATUS=$(curl -o /dev/null -w "%{http_code}" -s "http://localhost:${{ env.STOPPED_PORT }}/env" || true)
+              echo "Attempt $i: Status code $STATUS"
+              if [ "$STATUS" = "200" ]; then
                 echo "Health check passed"
                 exit 0
-              echo $i
               fi
               sleep 10
             done
             echo "Health check failed after 6 attempts"
-            exit 1  # Exit with error code to fail the GitHub Action
+            exit 1
 
-#      - name: Check deploy server URL
+      #      - name: Check deploy server URL
 #        uses: jtalk/url-health-check-action@v3
 #        with:
 #          url: http://${{ secrets.LIVE_SERVER_IP }}:${{ env.STOPPED_PORT }}/env
