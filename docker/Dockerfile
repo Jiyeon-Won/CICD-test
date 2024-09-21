@@ -4,6 +4,7 @@ ARG JAR_FILE=build/libs/*.jar
 ARG PROFILES
 ARG ENV
 
-COPY ${JAR_FILE} app.jar
+WORKDIR /apps
+COPY ${JAR_FILE} /apps/app.jar
 
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=${PROFILES}", "-Dserver.env=${ENV}", "app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=${PROFILES}", "-Dserver.env=${ENV}", "/apps/app.jar"]

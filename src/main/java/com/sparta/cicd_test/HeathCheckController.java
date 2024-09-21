@@ -15,7 +15,7 @@ public class HeathCheckController {
 
     @Value("${server.port}")
     private String serverPort;
-    @Value(("${server.serverAddress}"))
+    @Value(("${server.address}"))
     private String serverAddress;
     @Value(("${serverName}"))
     private String serverName;
