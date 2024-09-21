@@ -100,7 +100,7 @@ jobs:
             echo "Starting health check on port ${{ env.STOPPED_PORT }}"
             for i in {1..6}; do
               STATUS=$(curl -o /dev/null -w "%{http_code}" "http://localhost:${{ env.STOPPED_PORT }}/env")
-              if [ "$STATUS" -eq 200 ]; then
+              if [ $STATUS = 200 ]; then
                 echo "Health check passed"
                 exit 0
               else
